@@ -6,10 +6,14 @@
     box-shadow: 5px 5px 8px hsla(308, 70%, 26%, 0.818);
     color: black;
     margin-left: 5px;
-    height: 500px;
+    height: 515px;
     display: inline-block;
     background-color: #312f3499;
     
+}
+
+.song span{
+    color: white;
 }
 
 .navbar li button:active{
@@ -29,27 +33,82 @@
         cursor: pointer;
         width: 450px;
 }
+.navbar li{
+    list-style-type:none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    
+}
 
 .navbar{
-    
     
     border: none;
     color:white;
     border-color: orange;
-   
-    display: inline-block;
+    background-color: none;
     background-color: hsla(132, 14%, 7%, 0.584);
+    overflow: auto;
+    max-height: 480px;
+   scrollbar-color: hsla(320, 100%, 98%, 0.536) hsla(132, 14%, 7%, 0.584);
 }
+
+
+
+
+
 .playContainer{
-    border: solid;
+    border: none;
     border-color: white;
-    display: inline-block;
+    
     position: absolute;
     margin-top: 12%;
     margin-left: 10%;
     height:500px;
     width:500px;
+    
+    
 }
+
+#openPlaylist{
+
+    border:solid;
+    background-color: transparent;
+    color: white;
+    width: 500px;
+    text-align: left;
+    font-size: 20px;
+    
+}
+#openPlaylist:active{
+
+    background-color: red;
+
+}
+#openPlaylist:hover{
+
+    background-color: rgb(108, 98, 114);
+}
+
+.btn.btn-secondary:hover{
+background-color: rgb(108, 98, 114);
+}
+
+.btn.btn-secondary.playlistBtn{
+
+    font-size: 17px;
+    width: 500px;
+    background-color: hsla(132, 14%, 7%, 0.953);
+    
+
+}
+.btn.btn-secondary.playlistBtn:hover{
+
+    background-color: rgb(108, 98, 114);
+    
+
+}
+
 
 #songContainer{
     

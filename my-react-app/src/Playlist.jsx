@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {useState, useEffect, useRef} from 'react';
-
+import Button from 'react-bootstrap/Button';
 
 function Playlist(props){
 
@@ -17,7 +17,7 @@ function Playlist(props){
 
             //Pushing song names to the playlist to be displayed
             playlistItems.push(<li key={i}><button onClick={()=> 
-            songSelected(i)}>
+            props.onSongSelect(i)}>
                 {newSubstring}
                 </button></li>);
 
@@ -35,12 +35,64 @@ function Playlist(props){
     return(
 
         <>
+            
             <nav className="navbar">
-
+                {/*<button id='openPlaylist'>Open Playlist</button>*/}
+                
                 <ul>
                     
                     {createPlaylist()}
                     <li><button>Random SONG</button></li>
+                    <li><button>Random SONG
+                    Random SONG    
+                        Random SONG   
+
+                        Random SONG   <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        <br></br>
+
+                        Random SONG    
+                        Random SONG   
+
+                        Random SONG   <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        <br></br>
+
+                        Random SONG    <br></br>
+                        v
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG   
+
+
+
+                        
+                        Random SONG   <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        Random SONG    <br></br>
+                        </button></li>
                 </ul>
 
             </nav>
@@ -51,8 +103,8 @@ function Playlist(props){
 
 Playlist.PropTypes ={
 
-    name: PropTypes.string,
-    playlist: PropTypes.array,
+    
+    audioPath: PropTypes.array.isRequired,
     onSongSelect: PropTypes.func.isRequired,
 }
 

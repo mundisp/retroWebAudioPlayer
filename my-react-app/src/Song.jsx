@@ -16,7 +16,15 @@ function Song(props){
     const [playButton, setPlayButton] = useState('play');
     const [progressWidth, setProgressWidth] = useState(0);
     
-    
+    useEffect(()=>{
+        const song = audioRef.current;
+        if(song){
+            song.src = props.audioLocation;
+            if(isPlaying){
+                song.play();
+            }
+        }
+    }, [props.audioLocation]);
 
     useEffect(()=> {
 
