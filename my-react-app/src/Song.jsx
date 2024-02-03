@@ -120,10 +120,13 @@ function Song(props){
             
 
            
-
+            
             <audio ref={audioRef} id='myAudio'>
                 <source src={props.audioLocation}/>
             </audio>
+
+            
+
             
            
             <div className='progressBar' value='0'>
@@ -149,6 +152,7 @@ Song.PropTypes ={
     inLibrary: PropTypes.bool,
     image: PropTypes.string,
     audioLocation: PropTypes.string,
+    selectedFiles: PropTypes.array,
 }
 
 Song.defaultProps ={
@@ -156,7 +160,7 @@ Song.defaultProps ={
     name: 'unknwon',
     genre: 'unknown genre',
     inLibrary: false,
-    
+    selectedFiles: [],
 }
 
 

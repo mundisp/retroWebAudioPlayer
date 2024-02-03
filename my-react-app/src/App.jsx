@@ -27,32 +27,58 @@ function App() {
   const playlist = new musicList;
   
   //Covers for the songs
-  playlist.images[0] = "./src/assets/paronator.jpeg"
-  playlist.images[1] = "./src/assets/wayoutwestjpeg.jpg"
-  playlist.images[2] = "./src/assets/tigris.jpg"
+  playlist.images[0] = "./src/assets/djoko.jpg"
+  playlist.images[1] = "./src/assets/efkxa.jpg"
+  playlist.images[2] = "./src/assets/dvrst.jpg"
   
   //Array with path/location of songs
-  playlist.audioPath[0] = './src/assets/Morning Mist.mp3'
-  playlist.audioPath[1] = './src/assets/Dancehall Tornado.mp3'
-  playlist.audioPath[2] = './src/assets/Mark Alow - Trip To The Lonely Planet.mp3'
+  playlist.audioPath[0] = './src/assets/Let You Go - DJOKO.mp3'
+  playlist.audioPath[1] = './src/assets/what about the soul - efxka.mp3'
+  playlist.audioPath[2] = './src/assets/Still Breathing - DVRST.mp3'
 
   playlist.populateNames();
 
   //Keeps track of the most recent song selection
   const [selectedSongIndex, setSelectedSongIndex] = useState(0);
+  
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
   const [selectedFileNames, setSelectedFileNames] = useState([]);
+
+
+  const [newPlaylist, setNewPlaylist] = useState(new musicList());
+
+
+
 
   const handleFiles = (files)=> {
 
     setSelectedFileNames(files);
 
-    for(var i=0; i<files.length; i++){
+    /*
+    for(var i=0; i<selectedFileNames.length; i++){
 
-      console.log(`song name is ${files[i]}`); 
+      console.log(`song name is ${selectedFileNames[i]}`); 
     }
-
+    */
+    const newPlaylist = new musicList();
+    newPlaylist.names = selectedFileNames;
+    setNewPlaylist({...newPlaylist});
   }
+
+
+
+  // Define setPlaylist to manage the playlist state
+  
+  const handleUrls = (urls) => {
+    setNewPlaylist((prevPlaylist) => ({
+      ...prevPlaylist,
+      audioPath: urls,
+    }));
+  };
+
+
+
 
   const handleSongSelect = (index)=> {
     setSelectedSongIndex(index);
@@ -69,7 +95,7 @@ function App() {
 
   return(
     <>
-      <Intro onFileSelection={handleFiles}/>
+      <Intro onFileSelection={handleFiles} onUrlSelection ={handleUrls}/>
 
       
       <div className='playContainer'>
@@ -77,6 +103,7 @@ function App() {
         {isNavbarOpen ? 'Hide' : 'Open playlist'}
       </Button>
         
+
         {isNavbarOpen && (
         <Playlist playlist={playlist.audioPath} onSongSelect={handleSongSelect}/>
         )}
@@ -90,6 +117,7 @@ function App() {
       image={playlist.images[selectedSongIndex]} 
       inLibrary={false} 
       audioLocation={playlist.audioPath[selectedSongIndex]}
+      selectedFiles={selectedFileNames}
       />
     </div>
 
@@ -99,8 +127,7 @@ function App() {
 
       <div className='dropdownList'>
         <a href="#">Retrowave Style</a><br></br>
-        <a href="#">Maldives</a><br></br>
-        <a href="#">Universe</a><br></br>
+        
       </div>
       
   </div>
