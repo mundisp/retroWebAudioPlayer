@@ -3,7 +3,7 @@ import Song from './Song.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Intro from './Intro.jsx'
 import Playlist from './Playlist.jsx'
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
       }
     }
   }
+  
 
   //Object holding all the attributes of a playlist
   const playlist = new musicList;
@@ -31,71 +32,80 @@ function App() {
   playlist.images[1] = "./src/assets/efkxa.jpg"
   playlist.images[2] = "./src/assets/dvrst.jpg"
   
-  //Array with path/location of songs
+  //Default playlist Array with path/location of songs
   playlist.audioPath[0] = './src/assets/Let You Go - DJOKO.mp3'
   playlist.audioPath[1] = './src/assets/what about the soul - efxka.mp3'
   playlist.audioPath[2] = './src/assets/Still Breathing - DVRST.mp3'
 
   playlist.populateNames();
 
+  
+
+  const placeholderCover = './src/assets/coverArt.jpg';
+  const wallpapers = ['./src/assets/retrowaveNeon.jpg',
+                      './src/assets/retro2.jpg',
+                      './src/assets/retro3.jpg',
+                      './src/assets/img4.jpg',
+                      './src/assets/img5.jpg',
+                      './src/assets/img6.jpg',
+                      './src/assets/img7.jpg'];
+
   //Keeps track of the most recent song selection
   const [selectedSongIndex, setSelectedSongIndex] = useState(0);
-  
+  //Changes the state of the navigation bar
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  //Generates playlist based on files selected by user
+  const[updatedPlaylist, setUpdatedPlaylist] = useState(new musicList()); 
 
-  const [selectedFileNames, setSelectedFileNames] = useState([]);
+ //Default playlist if no songs selected
+  useEffect(()=>{
 
+    setUpdatedPlaylist(playlist);
 
-  const [newPlaylist, setNewPlaylist] = useState(new musicList());
+  }, []);
 
+  const handleFiles = (files, urls)=> {
 
-
-
-  const handleFiles = (files)=> {
-
-    setSelectedFileNames(files);
-
-    /*
-    for(var i=0; i<selectedFileNames.length; i++){
-
-      console.log(`song name is ${selectedFileNames[i]}`); 
+    for(var i=0; i<files.length; i++){
+      console.log(`song name is ${files[i]}`); 
     }
-    */
+    for(var i =0; i < urls.length; i++){
+      console.log(`URL is ${urls[i]}`);
+      }
+
+    //New musiclist with the selected files
     const newPlaylist = new musicList();
-    newPlaylist.names = selectedFileNames;
-    setNewPlaylist({...newPlaylist});
+    newPlaylist.names = files;
+    newPlaylist.audioPath = urls;
+    
+    setUpdatedPlaylist(newPlaylist);
+
   }
 
-
-
-  // Define setPlaylist to manage the playlist state
-  
-  const handleUrls = (urls) => {
-    setNewPlaylist((prevPlaylist) => ({
-      ...prevPlaylist,
-      audioPath: urls,
-    }));
-  };
-
-
+  const handleForwardSelection = ()=>{
+    setSelectedSongIndex(selectedSongIndex + 1);
+  }
 
 
   const handleSongSelect = (index)=> {
     setSelectedSongIndex(index);
   };
 
-
-  var playlistStatus = 'Open Playlist';
-
   const handleOpenPlaylist = ()=>{
-
    setIsNavbarOpen(!isNavbarOpen);
+  }
+
+
+
+  function changeBackground(imageIndex){
+
+    document.body.style.backgroundImage = `url(${wallpapers[imageIndex]})`
 
   }
 
   return(
     <>
-      <Intro onFileSelection={handleFiles} onUrlSelection ={handleUrls}/>
+      <Intro onFileSelection={handleFiles}/>
 
       
       <div className='playContainer'>
@@ -105,19 +115,20 @@ function App() {
         
 
         {isNavbarOpen && (
-        <Playlist playlist={playlist.audioPath} onSongSelect={handleSongSelect}/>
+        <Playlist playlist={updatedPlaylist.names} onSongSelect={handleSongSelect}/>
         )}
       
         </div>
       
     <div id="songContainer">
       <Song 
-      name={playlist.names[selectedSongIndex]}
-      genre="Deep house" 
-      image={playlist.images[selectedSongIndex]} 
+      name={updatedPlaylist.names[selectedSongIndex]}
+      
+      image={placeholderCover} 
       inLibrary={false} 
-      audioLocation={playlist.audioPath[selectedSongIndex]}
-      selectedFiles={selectedFileNames}
+      audioLocation={updatedPlaylist.audioPath[selectedSongIndex]}
+      forwardSelection={handleForwardSelection}
+      
       />
     </div>
 
@@ -126,8 +137,14 @@ function App() {
     <Button variant="secondary">Select background</Button>
 
       <div className='dropdownList'>
-        <a href="#">Retrowave Style</a><br></br>
-        
+       
+        <button onClick={ ()=> changeBackground(0)}>Original retrowave</button>
+        <button onClick={ ()=> changeBackground(1)}>Better retro</button>
+        <button onClick={ ()=> changeBackground(2)}>OMG</button>
+        <button onClick={ ()=> changeBackground(3)}>ring</button>
+        <button onClick={ ()=> changeBackground(4)}>moon</button>
+        <button onClick={ ()=> changeBackground(5)}>chillin' w/cat</button>
+        <button onClick={ ()=> changeBackground(6)}>chillin' w/cat for girls</button>
       </div>
       
   </div>

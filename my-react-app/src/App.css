@@ -17,7 +17,7 @@
 }
 
 .navbar li button:active{
-    background-color: red;
+    background-color: purple;
 }
 .navbar ul button{
     background-color: transparent;
@@ -50,7 +50,7 @@
     background-color: hsla(132, 14%, 7%, 0.584);
     overflow: auto;
     max-height: 480px;
-   scrollbar-color: hsla(320, 100%, 98%, 0.536) hsla(132, 14%, 7%, 0.584);
+    scrollbar-color: hsla(320, 100%, 98%, 0.536) hsla(132, 14%, 7%, 0.584);
 }
 
 
@@ -215,7 +215,7 @@ background-color: rgb(108, 98, 114);
 body{
 
     background-size: 100%;
-    background-image: url('./src/assets/retrowaveNeon.jpg');
+    background-image: url('./src/assets/img5.jpg');
 }
 
 
@@ -254,7 +254,7 @@ body{
     width: 130px;
     height: 50px;
     border-radius: 5%;
-
+    
 }
 
 
@@ -266,34 +266,39 @@ body{
 .dropdown{
     position: fixed;
     border: none;
-    
+    border-color: white;
     margin-left: 90%;
-    margin-top: 40%;
+    margin-top: 37%;
     display: inline-block;
 }
 
 .dropdown:hover .dropdownList{
     display: block;
     cursor: pointer;
-    background-color: hsl(285, 3%, 31%);
+    background-color: hsla(132, 14%, 7%, 0.584);
 }
-
-
 
 .dropdown .dropdownList{
     display: none;
     border:none;
-    
-   
-    
 }
 
-.dropdownList a{
-    font-size: 20px;
-    text-decoration: none;
+.dropdownList button{
+    font-size: 15px;
     color: white;
-
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    padding: none;
+    width: 155px;
 }
+.dropdownList button:hover{
+
+    
+    background-color: rgb(108, 98, 114);
+    
+}
+
 
 
 
