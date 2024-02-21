@@ -23,7 +23,6 @@ function App() {
     }
   }
   
-
   //Object holding all the attributes of a playlist
   const playlist = new musicList;
   
@@ -38,8 +37,6 @@ function App() {
   playlist.audioPath[2] = './src/assets/Still Breathing - DVRST.mp3'
 
   playlist.populateNames();
-
-  
 
   const placeholderCover = './src/assets/coverArt.jpg';
   const wallpapers = ['./src/assets/retrowaveNeon.jpg',
@@ -81,11 +78,9 @@ function App() {
     setUpdatedPlaylist(newPlaylist);
 
   }
-
   const handleForwardSelection = ()=>{
     setSelectedSongIndex(selectedSongIndex + 1);
   }
-
 
   const handleSongSelect = (index)=> {
     setSelectedSongIndex(index);
@@ -94,8 +89,6 @@ function App() {
   const handleOpenPlaylist = ()=>{
    setIsNavbarOpen(!isNavbarOpen);
   }
-
-
 
   function changeBackground(imageIndex){
 
@@ -107,7 +100,6 @@ function App() {
     <>
       <Intro onFileSelection={handleFiles}/>
 
-      
       <div className='playContainer'>
       <Button variant="secondary" className='playlistBtn' onClick={handleOpenPlaylist}>
         {isNavbarOpen ? 'Hide' : 'Open playlist'}
@@ -132,7 +124,6 @@ function App() {
       />
     </div>
 
-
   <div className='dropdown'>
     <Button variant="secondary">Select background</Button>
 
@@ -149,6 +140,7 @@ function App() {
       
   </div>
 
+ 
   </>
   );
 }
