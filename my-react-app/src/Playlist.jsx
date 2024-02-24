@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import React, {useState, useEffect, useRef} from 'react';
-import Button from 'react-bootstrap/Button';
 
 function Playlist(props){
     const songs = props.playlist;
@@ -36,11 +34,8 @@ function Playlist(props){
 
 Playlist.PropTypes ={
 
-    
     names: PropTypes.array.isRequired,
     onSongSelect: PropTypes.func.isRequired,
 }
-
-
 
 export default Playlist

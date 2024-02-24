@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -21,17 +21,15 @@ function Intro({onFileSelection, onUrlSelection}){
         
         
         if (files.length === 0) {
-            //alert('Please select one or more MP3 files.');
+            
             return;
         }
         
-
     // Extract file names
     const fileNames = Array.from(files, (file) => file.name);
     onFileSelection(fileNames, fileURLS);
     }
 
-    
 return(
     <>
     {isIntroVisible && (
@@ -43,7 +41,6 @@ return(
     <br></br>
     <input type="file" id="fileInput" accept='.mp3' multiple/>
     <button className='importBtn' onClick={handleButtonClick}>Import playlist</button>
-    {/*<Button variant="secondary" className='buttonIntro'></Button>*/}
     </div>
     )}
     </>
